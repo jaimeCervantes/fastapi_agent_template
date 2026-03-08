@@ -75,6 +75,8 @@ You can use prompts like:
 - "I want to fix a bug..."
 - "I want to change the behavior of an endpoint..."
 
+### SKILLS
+
 - `fastapi-backend-scaffold`: For setting up boilerplate, repairing the repository, or dependency management.
 - `fastapi-bdd-feature`: For implementing new features starting from defining the problem,Gherkin scenario, to tests, and finally to business code.
 
