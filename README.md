@@ -64,6 +64,20 @@ features/
 tests/
 ```
 
+## Using this Template with AI Agents
+
+This repository is pre-configured with `AGENTS.md` and specific skills under `.agents/skills/` to help AI assistants (like GitHub Copilot Workspace, Cursor, Gemini, Claude Code, Codex, etc) understand the project architecture and workflows.
+
+You can use prompts like:
+
+- "Init the project"
+- "I want to add a new feature..."
+- "I want to fix a bug..."
+- "I want to change the behavior of an endpoint..."
+
+- `fastapi-backend-scaffold`: For setting up boilerplate, repairing the repository, or dependency management.
+- `fastapi-bdd-feature`: For implementing new features starting from defining the problem,Gherkin scenario, to tests, and finally to business code.
+
 ## Product-specific section (fill this)
 
 - Domain:
