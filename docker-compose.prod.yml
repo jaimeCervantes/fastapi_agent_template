@@ -1,0 +1,10 @@
+services:
+  api:
+    restart: always
+    environment:
+      - ENVIRONMENT=production
+      # In production, this should be supplied via external secrets or ENV vars in the deployment environment
+      # - DATABASE_URL=postgresql+asyncpg://user:pass@host:port/dbname
+      # For GCP Cloud SQL, you'd typically use the Cloud SQL Auth Proxy or a direct private IP connection instead.
+    # No ports mapping overrides unless necessary (e.g., using a reverse proxy)
+    # The default CMD in Dockerfile runs without --reload, which is correct for prod.

@@ -1,0 +1,44 @@
+services:
+  api:
+    volumes:
+      - ./src:/app/src
+    environment:
+      - ENVIRONMENT=development
+      # Example URL targeting the compose db service
+      - DATABASE_URL=postgresql+asyncpg://postgres:fastapi_dev_password@db:5432/fastapi_db
+    depends_on:
+      db:
+        condition: service_healthy
+    # Override standard CMD with hot-reloading for development
+    command:
+      [
+        "uv",
+        "run",
+        "uvicorn",
+        "src.app.main:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8000",
+        "--reload",
+      ]
+
+  db:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: fastapi_dev_password
+      POSTGRES_DB: fastapi_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d fastapi_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:

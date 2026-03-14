@@ -5,21 +5,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
-    volumes:
-      - ./src:/app/src
     environment:
-      # Optional: any database URLs or environment variable overrides
-      - ENVIRONMENT=development
-    # Override standard CMD with hot-reloading for development
-    command:
-      [
-        "uv",
-        "run",
-        "uvicorn",
-        "src.app.main:app",
-        "--host",
-        "0.0.0.0",
-        "--port",
-        "8000",
-        "--reload",
-      ]
+      # Default environment setting, can be overridden
+      - ENVIRONMENT=production
+    # The default CMD is defined in the Dockerfile
