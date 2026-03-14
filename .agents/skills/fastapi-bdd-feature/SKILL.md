@@ -84,6 +84,15 @@ Recommended validation commands:
 - Write only the code needed to satisfy the selected scenario cleanly.
 - `MUST` not include `src` directory as module root
 
+## Coding Standards (STRICT)
+
+You already know PEP 8, Clean Code, Clean Architecture and SOLID principles. Apply them ruthlessly. Additionally, enforce these specific rules:
+
+- **Typing:** EVERY function signature MUST have strict Python type hints (e.g., `def get_user(user_id: int) -> User:`).
+- **Docstrings:** Use Google-style docstrings ONLY for complex business logic. Do not write obvious docstrings for simple getters/setters.
+- **Error Handling:** Never return generic 500 errors. Catch specific exceptions in the `app` layer and return structured JSON responses.
+- **Naming:** Variables and functions `MUST` be in `snake_case`. Classes in `PascalCase`.
+
 ## Migration rule
 
 If SQLAlchemy models under `src/infra/db/` change, report the exact Alembic command needed:
